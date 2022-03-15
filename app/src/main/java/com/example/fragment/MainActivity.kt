@@ -4,6 +4,8 @@ package com.example.fragment
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import androidx.fragment.app.transaction
 import com.example.fragment.databinding.ActivityMainBinding
 
 
@@ -27,10 +29,9 @@ class MainActivity : AppCompatActivity() {
                         .replace(binding.fragCont.id, HomeFragment())
                         .commit()
                 R.id.phone ->
-
-                    supportFragmentManager.beginTransaction()
-                        .replace(binding.fragCont.id, CallFragment())
-                        .commit()
+                supportFragmentManager.commit {
+                    replace(R.id.frag_cont,CallFragment(),"ok")
+                }
                 R.id.Notification ->
                     supportFragmentManager.beginTransaction()
                         .replace(binding.fragCont.id, NotificationFragment())
